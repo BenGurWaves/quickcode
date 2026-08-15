@@ -1,0 +1,19 @@
+# QuickCode
+
+QuickCode creates QR codes whose destinations can be edited after printing. Static QR codes work without an account; dynamic QR codes route through a QuickCode redirect and record only a timestamped scan count.
+
+## Key links
+- Home: https://quickcode.io/
+- Generator: https://quickcode.io/generator
+- Pricing: https://quickcode.io/pricing
+- About: https://quickcode.io/about
+- Restaurant menus: https://quickcode.io/qr-code-for/restaurant-menu
+- WiFi sharing: https://quickcode.io/qr-code-for/wifi
+- Business cards: https://quickcode.io/qr-code-for/business-card
+- Wedding invitations: https://quickcode.io/qr-code-for/wedding
+- Real estate signs: https://quickcode.io/qr-code-for/real-estate-sign
+- Event check-in: https://quickcode.io/qr-code-for/event-ticket
+- Product packaging: https://quickcode.io/qr-code-for/product-packaging
+
+## Privacy
+QuickCode does not collect personal or device-identifying scan data. Scan logs contain a count and timestamp only.
