@@ -39,7 +39,7 @@ Output directory: `dist`
 
 Cloudflare Pages project: https://quickcode-b4y.pages.dev/
 
-Add the variables from `.env.example` in Pages → Settings → Environment variables. `SUPABASE_SERVICE_ROLE_KEY`, `STRIPE_SECRET_KEY`, and `STRIPE_PRICE_ID` are server-only and must never be prefixed with `VITE_`.
+Add the variables from `.env.example` in Pages → Settings → Environment variables. `SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY`, `STRIPE_SECRET_KEY`, and `STRIPE_PRICE_ID` are server-only and must never be prefixed with `VITE_`.
 
 ## Data model
 
