@@ -22,5 +22,6 @@ export const onRequest: PagesFunction<QuickCodeEnv> = async ({ request, env }) =
       });
     }
   }
-  return Response.json({ user: { id: user.id, email: user.email }, plan, canCreateDynamic: plan === 'paid', canUseAnalytics: plan === 'paid', canCustomize: plan === 'paid' });
+  const paid = plan === 'paid';
+  return Response.json({ user: { id: user.id, email: user.email }, plan, features: { unlimitedDynamicCodes: paid, fullScanAnalytics: paid, customColors: paid, logoOverlay: paid, noQuickCodeBranding: paid }, canCreateDynamic: paid, canUseAnalytics: paid, canCustomize: paid });
 };

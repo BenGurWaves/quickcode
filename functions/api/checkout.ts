@@ -1,6 +1,8 @@
 import { quickCodeUser, supabaseHeaders, type QuickCodeEnv } from '../_quickcode';
 
 export const onRequest: PagesFunction<QuickCodeEnv> = async ({ request, env }) => {
+  const checkoutInput = request.method === 'POST' ? await request.json().catch(() => ({})) as { interval?: 'month' | 'year' } : {};
+  const interval = checkoutInput.interval === 'year' ? 'year' : 'month';
   const user = await quickCodeUser(request, env);
   if (!user) return Response.json({ error: 'Sign in required before checkout' }, { status: 401 });
   if (!env.STRIPE_SECRET_KEY) return Response.json({ error: 'Stripe is not configured.' }, { status: 500 });
@@ -25,9 +27,9 @@ export const onRequest: PagesFunction<QuickCodeEnv> = async ({ request, env }) =
     body.set('line_items[0][price]', priceId);
   } else {
     body.set('line_items[0][price_data][currency]', 'usd');
-    body.set('line_items[0][price_data][unit_amount]', '599');
-    body.set('line_items[0][price_data][recurring][interval]', 'month');
-    body.set('line_items[0][price_data][product_data][name]', 'QuickCode Dynamic');
+    body.set('line_items[0][price_data][unit_amount]', interval === 'year' ? '4900' : '599');
+    body.set('line_items[0][price_data][recurring][interval]', interval);
+    body.set('line_items[0][price_data][product_data][name]', `QuickCode Dynamic (${interval === 'year' ? 'Annual' : 'Monthly'})`);
     body.set('line_items[0][price_data][product_data][description]', 'Unlimited editable QR codes, analytics, custom colors, and logo overlays.');
   }
   const response = await fetch('https://api.stripe.com/v1/checkout/sessions', { method: 'POST', headers: stripeHeaders, body });
