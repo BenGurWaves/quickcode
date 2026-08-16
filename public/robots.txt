@@ -6,4 +6,4 @@ User-agent: ClaudeBot
 Allow: /
 User-agent: PerplexityBot
 Allow: /
-Sitemap: https://quickcode.io/sitemap.xml
+Sitemap: https://quickcode-b4y.pages.dev/sitemap.xml

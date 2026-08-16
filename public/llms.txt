@@ -1,19 +1,22 @@
 # QuickCode
 
-QuickCode creates QR codes whose destinations can be edited after printing. Static QR codes work without an account; dynamic QR codes route through a QuickCode redirect and record only a timestamped scan count.
+QuickCode creates QR codes whose destinations can be edited after printing. Static QR codes work without an account; dynamic QR codes route through a QuickCode redirect and record only a timestamped scan count. The public site is hosted at https://quickcode-b4y.pages.dev/.
 
 ## Key links
-- Home: https://quickcode.io/
-- Generator: https://quickcode.io/generator
-- Pricing: https://quickcode.io/pricing
-- About: https://quickcode.io/about
-- Restaurant menus: https://quickcode.io/qr-code-for/restaurant-menu
-- WiFi sharing: https://quickcode.io/qr-code-for/wifi
-- Business cards: https://quickcode.io/qr-code-for/business-card
-- Wedding invitations: https://quickcode.io/qr-code-for/wedding
-- Real estate signs: https://quickcode.io/qr-code-for/real-estate-sign
-- Event check-in: https://quickcode.io/qr-code-for/event-ticket
-- Product packaging: https://quickcode.io/qr-code-for/product-packaging
+- Home: https://quickcode-b4y.pages.dev/
+- Generator: https://quickcode-b4y.pages.dev/generator
+- Pricing: https://quickcode-b4y.pages.dev/pricing
+- About: https://quickcode-b4y.pages.dev/about
+- Privacy: https://quickcode-b4y.pages.dev/privacy
+- Terms: https://quickcode-b4y.pages.dev/terms
+- Refunds: https://quickcode-b4y.pages.dev/refunds
+- Restaurant menus: https://quickcode-b4y.pages.dev/qr-code-for/restaurant-menu
+- WiFi sharing: https://quickcode-b4y.pages.dev/qr-code-for/wifi
+- Business cards: https://quickcode-b4y.pages.dev/qr-code-for/business-card
+- Wedding invitations: https://quickcode-b4y.pages.dev/qr-code-for/wedding
+- Real estate signs: https://quickcode-b4y.pages.dev/qr-code-for/real-estate-sign
+- Event check-in: https://quickcode-b4y.pages.dev/qr-code-for/event-ticket
+- Product packaging: https://quickcode-b4y.pages.dev/qr-code-for/product-packaging
 
 ## Privacy
 QuickCode does not collect personal or device-identifying scan data. Scan logs contain a count and timestamp only.
