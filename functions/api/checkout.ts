@@ -35,12 +35,14 @@ export const onRequest: PagesFunction<QuickCodeEnv> = async ({ request, env }) =
     await fetch(`${env.SUPABASE_URL}/rest/v1/qc_subscriptions`, { method: 'POST', headers: { ...headers, 'Content-Type': 'application/json', Prefer: 'resolution=merge-duplicates,return=minimal' }, body: JSON.stringify({ user_id: user.id, stripe_customer_id: customerId, plan: 'free', status: 'checkout_started' }) });
   }
 
-  const body = new URLSearchParams({ mode: 'subscription', customer: customerId, 'line_items[0][price]': priceId, 'line_items[0][quantity]': '1', success_url: `${env.PUBLIC_SITE_URL}/dashboard?checkout=success`, cancel_url: `${env.PUBLIC_SITE_URL}/pricing`, 'metadata[user_id]': user.id });
+  const configuredOrigin = (env.PUBLIC_SITE_URL || new URL(request.url).origin).trim();
+  const origin = /^https?:\/\//i.test(configuredOrigin) ? configuredOrigin.replace(/\/$/, '') : `https://${configuredOrigin.replace(/^\/+/, '').replace(/\/$/, '')}`;
+  const body = new URLSearchParams({ mode: 'subscription', customer: customerId, 'line_items[0][price]': priceId, 'line_items[0][quantity]': '1', success_url: `${origin}/dashboard?checkout=success`, cancel_url: `${origin}/pricing`, 'metadata[user_id]': user.id });
   const response = await fetch('https://api.stripe.com/v1/checkout/sessions', { method: 'POST', headers: stripeHeaders, body });
   if (!response.ok) {
     const stripeError = (await response.json().catch(() => null)) as { error?: { message?: string } } | null;
     return Response.json({ error: `Stripe Checkout could not be created: ${stripeError?.error?.message || 'check the Price ID, secret key, and Stripe account'}` }, { status: 502 });
   }
   const session = (await response.json()) as { url?: string };
-  return Response.redirect(session.url || `${env.PUBLIC_SITE_URL}/pricing`, 303);
+  return Response.redirect(session.url || `${origin}/pricing`, 303);
 };
