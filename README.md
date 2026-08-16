@@ -41,7 +41,7 @@ Cloudflare Pages project: https://quickcode-b4y.pages.dev/
 
 Add the variables from `.env.example` in Pages → Settings → Environment variables. `VITE_SUPABASE_URL` and `VITE_SUPABASE_ANON_KEY` are browser-safe public values. `SUPABASE_URL` should contain the same Glyph project URL, but is separately named because Cloudflare Functions read server-side bindings. `SUPABASE_SERVICE_ROLE_KEY` and `STRIPE_SECRET_KEY` are server-only.
 
-For Stripe, use either `STRIPE_PRICE_ID` or `STRIPE_PRODUCT_ID`. The checkout function supports a Product ID by reading that product's default recurring price. If the product has no default recurring price, create one in Stripe and set `STRIPE_PRICE_ID` instead. Do not put a Stripe secret key or Supabase service-role key in any `VITE_` variable.
+Stripe setup is optional: when `STRIPE_PRICE_ID` is empty, QuickCode creates the `$5.99/month` recurring price inline during Checkout. No Stripe Product or Price needs to be created first. If you later add `STRIPE_PRICE_ID`, Checkout will use that explicit recurring price. Do not put a Stripe secret key or Supabase service-role key in any `VITE_` variable.
 
 ## QuickCode access model
 
