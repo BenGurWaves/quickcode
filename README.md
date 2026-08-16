@@ -39,7 +39,13 @@ Output directory: `dist`
 
 Cloudflare Pages project: https://quickcode-b4y.pages.dev/
 
-Add the variables from `.env.example` in Pages → Settings → Environment variables. `SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY`, `STRIPE_SECRET_KEY`, and `STRIPE_PRICE_ID` are server-only and must never be prefixed with `VITE_`.
+Add the variables from `.env.example` in Pages → Settings → Environment variables. `VITE_SUPABASE_URL` and `VITE_SUPABASE_ANON_KEY` are browser-safe public values. `SUPABASE_URL` should contain the same Glyph project URL, but is separately named because Cloudflare Functions read server-side bindings. `SUPABASE_SERVICE_ROLE_KEY` and `STRIPE_SECRET_KEY` are server-only.
+
+For Stripe, use either `STRIPE_PRICE_ID` or `STRIPE_PRODUCT_ID`. The checkout function supports a Product ID by reading that product's default recurring price. If the product has no default recurring price, create one in Stripe and set `STRIPE_PRICE_ID` instead. Do not put a Stripe secret key or Supabase service-role key in any `VITE_` variable.
+
+## QuickCode access model
+
+QuickCode does not alter Glyph's existing tables. It uses `qc_subscriptions`, `qc_dynamic_codes`, and `qc_scan_log`. Free accounts can create static codes only. Paid accounts must have an active or trialing Stripe subscription before the dynamic-code API, paid customization, or analytics access is allowed. The API enforces this independently of the UI.
 
 ## Data model
 
